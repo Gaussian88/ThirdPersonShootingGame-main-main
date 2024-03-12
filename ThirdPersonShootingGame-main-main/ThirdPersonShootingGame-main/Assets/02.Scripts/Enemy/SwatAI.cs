@@ -23,6 +23,7 @@ public class SwatAI : MonoBehaviour
     private readonly int hashDieIdx = Animator.StringToHash("DieIdx");
     private readonly int hashWalkSpeed = Animator.StringToHash("WalkSpeed");
     private readonly int hashOffset = Animator.StringToHash("Offset");
+    private readonly int hashPlayerDie = Animator.StringToHash("PlayerDieTrigger");
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -34,6 +35,8 @@ public class SwatAI : MonoBehaviour
     }
     private void OnEnable()
     {
+        Damage.OnPlayerDie += OnPlayerDie;
+        BarrelCtrl.OnEnemyDie += Die;
         animator.SetFloat(hashOffset, Random.Range(0.3f, 1.0f));
         animator.SetFloat(hashWalkSpeed, Random.Range(1f, 2f));
         StartCoroutine(CheckState());
@@ -85,8 +88,15 @@ public class SwatAI : MonoBehaviour
 
         }
     }
+    void OnPlayerDie()
+    {
+        swatFire.isFire = false;
+        StopAllCoroutines();
+        animator.SetTrigger(hashPlayerDie);
+    }
     public void Die()
     {
+        if (isDie) return;
         swatAgent.Stop();
         isDie = true;
         swatFire.isFire = false;
@@ -95,7 +105,8 @@ public class SwatAI : MonoBehaviour
         animator.SetInteger(hashDieIdx, Random.Range(0, 2));
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<CapsuleCollider>().enabled = false;
-        StartCoroutine(PushPool()); 
+        StartCoroutine(PushPool());
+        GameManager.Instance.KillScoreNumber(1);
     }
     IEnumerator PushPool()
     {
@@ -115,6 +126,7 @@ public class SwatAI : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+        Damage.OnPlayerDie -= OnPlayerDie;
+        BarrelCtrl.OnEnemyDie -= Die;
     }
 }

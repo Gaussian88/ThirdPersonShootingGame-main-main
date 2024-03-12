@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BULLET
   - E_BULLET
+  - ENEMY
+  - SWAT
   layers:
   - Default
   - TransparentFX

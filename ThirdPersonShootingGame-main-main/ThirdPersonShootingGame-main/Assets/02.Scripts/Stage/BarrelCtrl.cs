@@ -9,6 +9,8 @@ public class BarrelCtrl : MonoBehaviour
     [SerializeField] GameObject explosionSpark;
     public int hitCount = 0;
     private string bulletTag = "BULLET";
+    public delegate void EnemyDieHandler();
+    public static EnemyDieHandler OnEnemyDie;
     void Start()
     {
         source = GetComponent<AudioSource>();
@@ -32,7 +34,7 @@ public class BarrelCtrl : MonoBehaviour
             Quaternion.identity);
         Destroy(exp, 1.5f);
         source.PlayOneShot(explosionClip, 1.0f);
-        Collider[] Cols = Physics.OverlapSphere(transform.position, 20f,1<<8);
+        Collider[] Cols = Physics.OverlapSphere(transform.position, 20f,~(1<<6));
                       // 자기자신 위치에서 20근방의 콜라이더를 Cols를 배열 담는다.
         foreach(Collider col in Cols)
         {
@@ -42,6 +44,8 @@ public class BarrelCtrl : MonoBehaviour
                 rb.mass = 1.0f;
                 rb.AddExplosionForce(1000f, transform.position, 20f, 800f);
                 //리지디바디의폭파함수(폭파력, 위치 , 반경  , 위로 솟구치는 힘
+                //col.gameObject.SendMessage("Die",SendMessageOptions.DontRequireReceiver);
+                OnEnemyDie();
             }
 
         }

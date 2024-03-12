@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
     private readonly int hashDieIdx = Animator.StringToHash("DieIdx");
     private readonly int hashWalkSpeed = Animator.StringToHash("WalkSpeed");
     private readonly int hashOffset = Animator.StringToHash("Offset");
+    private readonly int hashPlayerDie = Animator.StringToHash("PlayerDieTrigger");
 
     void Awake()
     {
@@ -32,7 +33,10 @@ public class EnemyAI : MonoBehaviour
         ws = new WaitForSeconds(3f);
     }
     void OnEnable() //오브젝트가 활성화 될때 자동 호출 // 오브젝트 풀링
-    {
+    {  
+        //이벤트 연결 
+        Damage.OnPlayerDie += OnPlayerDie;
+        BarrelCtrl.OnEnemyDie += Die;
         animator.SetFloat(hashOffset, Random.Range(0.3f, 1.0f));
         animator.SetFloat(hashWalkSpeed, Random.Range(1f, 2f));
         StartCoroutine(EnemyState()); //거리를 재어서 현재 상태만 알려준다.
@@ -93,8 +97,15 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    void OnPlayerDie()
+    {
+        enemyFire.isFire = false;
+        StopAllCoroutines();
+        animator.SetTrigger(hashPlayerDie);
+    }
     public void Die()
     {
+        if (isDie) return;
         enemyFire.isFire = false;
         state = State.DIE;
         isDie = true;
@@ -104,6 +115,7 @@ public class EnemyAI : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = false;// 콜라이더 비활성화
         moveAgent.Stop();
         StartCoroutine(PushPool());
+        GameManager.Instance.KillScoreNumber(1);
     }
     IEnumerator PushPool()
     {
@@ -127,7 +139,9 @@ public class EnemyAI : MonoBehaviour
 
     }
     void OnDisable() //오브젝트가 비활성화 될때 자동 호출
-    {
-
+    {  
+        //이벤트 연결 해제 
+        Damage.OnPlayerDie -= OnPlayerDie;
+        BarrelCtrl.OnEnemyDie -= Die;
     }
 }

@@ -1,90 +1,248 @@
 fileFormatVersion: 2
 guid: 62a9e15619222ff4b87ffdc13818ac81
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: belly
-    100002: head
-    100004: hip
-    100006: jaw
-    100008: L_ankle
-    100010: L_arm
-    100012: L_elbow
-    100014: L_eye
-    100016: L_finger1
-    100018: L_finger2
-    100020: L_fingertip
-    100022: L_foot
-    100024: L_knee
-    100026: L_leg
-    100028: L_thumb1
-    100030: L_thumb2
-    100032: L_thumbtip
-    100034: L_toes
-    100036: L_wrist
-    100038: lip
-    100040: //RootNode
-    100042: R_ankle
-    100044: R_arm
-    100046: R_elbow
-    100048: R_eye
-    100050: R_finger1
-    100052: R_finger2
-    100054: R_fingertip
-    100056: R_foot
-    100058: R_knee
-    100060: R_leg
-    100062: R_thumb1
-    100064: R_thumb2
-    100066: R_thumbtip
-    100068: R_toes
-    100070: R_wrist
-    100072: shoulder
-    100074: top
-    400000: belly
-    400002: head
-    400004: hip
-    400006: jaw
-    400008: L_ankle
-    400010: L_arm
-    400012: L_elbow
-    400014: L_eye
-    400016: L_finger1
-    400018: L_finger2
-    400020: L_fingertip
-    400022: L_foot
-    400024: L_knee
-    400026: L_leg
-    400028: L_thumb1
-    400030: L_thumb2
-    400032: L_thumbtip
-    400034: L_toes
-    400036: L_wrist
-    400038: lip
-    400040: //RootNode
-    400042: R_ankle
-    400044: R_arm
-    400046: R_elbow
-    400048: R_eye
-    400050: R_finger1
-    400052: R_finger2
-    400054: R_fingertip
-    400056: R_foot
-    400058: R_knee
-    400060: R_leg
-    400062: R_thumb1
-    400064: R_thumb2
-    400066: R_thumbtip
-    400068: R_toes
-    400070: R_wrist
-    400072: shoulder
-    400074: top
-    7400000: Gangnam Style
-    9500000: //RootNode
-    2186277476908879412: ImportLogs
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: belly
+  - first:
+      1: 100002
+    second: head
+  - first:
+      1: 100004
+    second: hip
+  - first:
+      1: 100006
+    second: jaw
+  - first:
+      1: 100008
+    second: L_ankle
+  - first:
+      1: 100010
+    second: L_arm
+  - first:
+      1: 100012
+    second: L_elbow
+  - first:
+      1: 100014
+    second: L_eye
+  - first:
+      1: 100016
+    second: L_finger1
+  - first:
+      1: 100018
+    second: L_finger2
+  - first:
+      1: 100020
+    second: L_fingertip
+  - first:
+      1: 100022
+    second: L_foot
+  - first:
+      1: 100024
+    second: L_knee
+  - first:
+      1: 100026
+    second: L_leg
+  - first:
+      1: 100028
+    second: L_thumb1
+  - first:
+      1: 100030
+    second: L_thumb2
+  - first:
+      1: 100032
+    second: L_thumbtip
+  - first:
+      1: 100034
+    second: L_toes
+  - first:
+      1: 100036
+    second: L_wrist
+  - first:
+      1: 100038
+    second: lip
+  - first:
+      1: 100040
+    second: //RootNode
+  - first:
+      1: 100042
+    second: R_ankle
+  - first:
+      1: 100044
+    second: R_arm
+  - first:
+      1: 100046
+    second: R_elbow
+  - first:
+      1: 100048
+    second: R_eye
+  - first:
+      1: 100050
+    second: R_finger1
+  - first:
+      1: 100052
+    second: R_finger2
+  - first:
+      1: 100054
+    second: R_fingertip
+  - first:
+      1: 100056
+    second: R_foot
+  - first:
+      1: 100058
+    second: R_knee
+  - first:
+      1: 100060
+    second: R_leg
+  - first:
+      1: 100062
+    second: R_thumb1
+  - first:
+      1: 100064
+    second: R_thumb2
+  - first:
+      1: 100066
+    second: R_thumbtip
+  - first:
+      1: 100068
+    second: R_toes
+  - first:
+      1: 100070
+    second: R_wrist
+  - first:
+      1: 100072
+    second: shoulder
+  - first:
+      1: 100074
+    second: top
+  - first:
+      4: 400000
+    second: belly
+  - first:
+      4: 400002
+    second: head
+  - first:
+      4: 400004
+    second: hip
+  - first:
+      4: 400006
+    second: jaw
+  - first:
+      4: 400008
+    second: L_ankle
+  - first:
+      4: 400010
+    second: L_arm
+  - first:
+      4: 400012
+    second: L_elbow
+  - first:
+      4: 400014
+    second: L_eye
+  - first:
+      4: 400016
+    second: L_finger1
+  - first:
+      4: 400018
+    second: L_finger2
+  - first:
+      4: 400020
+    second: L_fingertip
+  - first:
+      4: 400022
+    second: L_foot
+  - first:
+      4: 400024
+    second: L_knee
+  - first:
+      4: 400026
+    second: L_leg
+  - first:
+      4: 400028
+    second: L_thumb1
+  - first:
+      4: 400030
+    second: L_thumb2
+  - first:
+      4: 400032
+    second: L_thumbtip
+  - first:
+      4: 400034
+    second: L_toes
+  - first:
+      4: 400036
+    second: L_wrist
+  - first:
+      4: 400038
+    second: lip
+  - first:
+      4: 400040
+    second: //RootNode
+  - first:
+      4: 400042
+    second: R_ankle
+  - first:
+      4: 400044
+    second: R_arm
+  - first:
+      4: 400046
+    second: R_elbow
+  - first:
+      4: 400048
+    second: R_eye
+  - first:
+      4: 400050
+    second: R_finger1
+  - first:
+      4: 400052
+    second: R_finger2
+  - first:
+      4: 400054
+    second: R_fingertip
+  - first:
+      4: 400056
+    second: R_foot
+  - first:
+      4: 400058
+    second: R_knee
+  - first:
+      4: 400060
+    second: R_leg
+  - first:
+      4: 400062
+    second: R_thumb1
+  - first:
+      4: 400064
+    second: R_thumb2
+  - first:
+      4: 400066
+    second: R_thumbtip
+  - first:
+      4: 400068
+    second: R_toes
+  - first:
+      4: 400070
+    second: R_wrist
+  - first:
+      4: 400072
+    second: shoulder
+  - first:
+      4: 400074
+    second: top
+  - first:
+      74: 7400000
+    second: Gangnam Style
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -93,15 +251,16 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'L_foot' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'R_foot' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n"
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'L_foot' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'R_foot' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -117,6 +276,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gangnam Style
       takeName: mixamo.com
+      internalID: 0
       firstFrame: 0
       lastFrame: 371
       wrapMode: 0
@@ -127,13 +287,13 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -149,25 +309,36 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -176,10 +347,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: hip
       humanName: Hips
@@ -643,13 +814,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

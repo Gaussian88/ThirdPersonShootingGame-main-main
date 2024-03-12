@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9723e919087e7594e871d919864497ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   _color: {r: 1, g: 0, b: 0, a: 1}
   _radius: 0.05
 --- !u!1001 &2797510154897813
@@ -97,6 +98,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
       propertyPath: m_Name
       value: swat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
+      propertyPath: m_TagString
+      value: ENEMY
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
       propertyPath: m_Controller
@@ -306,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb6110f2f6a82346a2c36008eff6f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   playerTr: {fileID: 0}
   swatTr: {fileID: 0}
   firePos: {fileID: 0}
