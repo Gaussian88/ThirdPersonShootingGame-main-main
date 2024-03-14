@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8763281662841745128}
   - component: {fileID: 2131207219054088380}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: S_FirePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8277846064677720048, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -6529273078546540562, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 728699696802933350, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
       propertyPath: m_Name
       value: swat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af19cc6a5ba952b4ba9d20ce847a2058, type: 3}
       propertyPath: m_TagString
@@ -334,6 +350,9 @@ MonoBehaviour:
   BloodEffect: {fileID: 0}
   hp: 100
   hpMax: 100
+  hpBar: {fileID: 0}
+  hpBarImg: {fileID: 0}
+  hpBarOffset: {x: 0, y: 2.2, z: 0}
 --- !u!54 &4383876301024673294
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -360,7 +379,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &5943998993004040986
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -400,6 +419,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
       propertyPath: m_Name
       value: w_rifle02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03cd26eddfc134a6dbc4d40f15965660, type: 3}
       propertyPath: m_LocalScale.x

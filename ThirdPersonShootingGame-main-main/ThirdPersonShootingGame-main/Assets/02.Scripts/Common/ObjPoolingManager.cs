@@ -10,6 +10,8 @@ public class ObjPoolingManager : MonoBehaviour
     [SerializeField] private GameObject E_bullet;
     [SerializeField] private List<GameObject> bulletList = new List<GameObject>();
     [SerializeField] private List<GameObject> E_bulletList = new List<GameObject>();
+    [SerializeField] private GameObject EnemyHpBar;
+    [SerializeField] private List <GameObject> EnemyHpBarList = new List<GameObject>();
     private int maxbullet = 10;
     private int E_maxbullet = 20;
     void Awake() //비활성화 되어도 호출  제일 빠르게 호출 Awake OnEnable Start()
@@ -20,9 +22,16 @@ public class ObjPoolingManager : MonoBehaviour
             Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
         bulletPrefab = Resources.Load("Weapons/Bullet") as GameObject;
+        EnemyHpBar = (GameObject)Resources.Load("UI/Enemy-HpBar");
         E_bullet = (GameObject)Resources.Load("Weapons/E_Bullet");
         CreatePlayerBullet();
         CreateE_Bullet();
+     
+    }
+    void Start()
+    {
+        CreatEnemyHpBarPooling();
+
     }
     void CreatePlayerBullet()
     {
@@ -66,5 +75,26 @@ public class ObjPoolingManager : MonoBehaviour
         }
         return null;
     }
+    void CreatEnemyHpBarPooling()
+    {
+        Canvas  uiCanvas = GameObject.Find("UI-Canvas").GetComponent<Canvas>();
+        for(int i =0; i< 10; i++)
+        {
+            var _hpbar = Instantiate(EnemyHpBar,uiCanvas.transform);
+            _hpbar.name = (i + 1).ToString() + "개";
+            _hpbar .gameObject.SetActive(false);
+            EnemyHpBarList.Add(_hpbar);
+        }
+        
+    }
+    public GameObject GetEnemyHpbar()
+    {
+        foreach (var _hp in EnemyHpBarList)
+        {
+            if(_hp.activeSelf ==false)
+                return _hp;
+        }
 
+        return null;
+    }
 }

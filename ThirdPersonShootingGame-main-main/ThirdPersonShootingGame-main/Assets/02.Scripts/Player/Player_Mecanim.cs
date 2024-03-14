@@ -8,12 +8,22 @@ public class Player_Mecanim : MonoBehaviour
     [SerializeField] Rigidbody rbody;
     [SerializeField] CapsuleCollider capsuleCollider;
     [SerializeField] Animator animator;
-    public float moveSpeed = 3f;
+    public float moveSpeed;
     public float turnSpeed = 90f;
     private float h, v;
     public bool isRun = false;
+
+    void OnEnable()
+    {
+        GameManager.OnItemChange += UpdateSetup;
+    }
+    void UpdateSetup()
+    {
+        moveSpeed = GameManager.Instance.gameData.speed;
+    }
     void Start()
     {
+        moveSpeed = GameManager.Instance.gameData.speed;
         tr = GetComponent<Transform>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         rbody = GetComponent<Rigidbody>();
@@ -51,5 +61,9 @@ public class Player_Mecanim : MonoBehaviour
             animator.SetFloat("speedY", v, 0.01f, Time.deltaTime);
         }
         tr.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X")  * Time.deltaTime* turnSpeed);
+    }
+    void OnDisable()
+    {
+        GameManager.OnItemChange -= UpdateSetup;
     }
 }

@@ -267,6 +267,12 @@ MonoBehaviour:
   source: {fileID: 0}
   explosionClip: {fileID: 0}
   explosionSpark: {fileID: 0}
+  textures: []
+  renderer: {fileID: 0}
+  meshes:
+  - {fileID: 4300000, guid: c34c879db77af964a8432a2abd2fd308, type: 3}
+  - {fileID: 4300000, guid: 9e203064fefcc294794ee363a2b1c4ba, type: 3}
+  meshFilter: {fileID: 6246497261798180872}
   hitCount: 0
 --- !u!208 &7750298935465042482
 NavMeshObstacle:
@@ -284,3 +290,8 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0.90000004}
   m_TimeToStationary: 0.5
+--- !u!33 &6246497261798180872 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 3300000, guid: 0cb3a092ec94c2741979790357cabba3, type: 3}
+  m_PrefabInstance: {fileID: 6246497261796987560}
+  m_PrefabAsset: {fileID: 0}

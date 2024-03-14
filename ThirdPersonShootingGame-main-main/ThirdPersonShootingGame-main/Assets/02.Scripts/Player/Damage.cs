@@ -9,14 +9,27 @@ public class Damage : MonoBehaviour
     private readonly string e_bulletTag = "E_BULLET";
     [SerializeField] private Image hpBar;
     [SerializeField] private Animator animator;
-    public int hp = 100;
-    public int hpMax = 100;
+    public int hp;
+    public int hpMax = 120;
     private readonly int hashDie = Animator.StringToHash("DIeTrigger");
     //대리자 반환형이 void이고 매개변수가 없는 함수를 대신 하겠다.
     public delegate void PlayerDieHandler();
     public static event PlayerDieHandler OnPlayerDie; //이벤트명을 전역 으로선언
+
+    void OnEnable()
+    {
+        //이벤트 연결
+        GameManager.OnItemChange += UpdateSetup;
+    }
+    void UpdateSetup()
+    {
+        hpMax = (int)GameManager.Instance.gameData.hp;
+        hp += (int)GameManager.Instance.gameData.hp - hp;
+    }
     void Start()
     {
+        hpMax = (int)GameManager.Instance.gameData.hp;
+        hp = hpMax;
         animator = GetComponent<Animator>();
         hpBar = GameObject.Find("Panel-HP").transform.GetChild(1).GetComponent<Image>();
         BloodEffect = Resources.Load<GameObject>("Effects/GoopSpray");
@@ -71,5 +84,9 @@ public class Damage : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(-Vector3.forward, _normal);
         GameObject blood = Instantiate<GameObject>(BloodEffect, hitpos, rot);
         Destroy(blood, 0.5f);
+    }
+    void OnDisable()
+    {
+        GameManager.OnItemChange -= UpdateSetup; //이벤트 해제 
     }
 }

@@ -38,7 +38,12 @@ public class FireCtrl : MonoBehaviour
     private float timePrev;
     private float fireRate = 0.1f; //발사 간격 시간 
     private Player_Mecanim player;
+    public bool isFire = false;
     private bool isReloding = false;
+    public int enemyLayer;
+    public int barrelLayer;
+    public int layerMask;
+    private float nextFire = 0f;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -63,36 +68,73 @@ public class FireCtrl : MonoBehaviour
         muzzleFlash.Stop();
         remaingBullet = maxBullet;
         remaingBullet = Mathf.Clamp(remaingBullet, 0, 10);
+        enemyLayer = LayerMask.NameToLayer("ENEMY");
+        barrelLayer = LayerMask.NameToLayer("BARREL");
+        layerMask = 1<<enemyLayer | 1<<barrelLayer;
     }
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-              //현재 UI에 이벤트 받는 것이 있다면 빠져 나간다.
+        Debug.DrawRay(firePos.position, firePos.forward * 20f, Color.black);
 
-        if(Input.GetMouseButton(0)&&Time.time - timePrev >fireRate)
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        //현재 UI에 이벤트 받는 것이 있다면 빠져 나간다.
+        MouseBtnFire();
+        RaycastHit hit;
+        if (Physics.Raycast(firePos.position, firePos.forward, out hit, 20f, layerMask))
+            isFire = hit.collider.CompareTag("ENEMY");
+        else
+            isFire = false;
+        if(!isReloding&& isFire)
         {
-             if(!player.isRun &&!isReloding)
-             {
-                --remaingBullet;
-                 Fire();
-                if(remaingBullet ==0)
+            if(Time.time > nextFire)
+            {
+               
+                Fire();
+              
+                isReloding = (--remaingBullet % maxBullet) == 0;
+                if(isReloding)
                 {
                     StartCoroutine(Reloading());
                 }
-             }
-                 
+                nextFire = Time.time + fireRate;
+            }
+
+        }
+
+    }
+
+    private void MouseBtnFire()
+    {
+        if (Input.GetMouseButton(0) && Time.time - timePrev > fireRate)
+        {
+            if (!player.isRun && !isReloding)
+            {
+                --remaingBullet;
+                Fire();
+                if (remaingBullet == 0)
+                {
+                    StartCoroutine(Reloading());
+                }
+            }
+
             timePrev = Time.time;
         }
-        else if(Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
-            muzzleFlash.Stop();
-            CartridgeEjectEffect.Stop();
+            WeaponEffectDisable();
         }
     }
+
+    private void WeaponEffectDisable()
+    {
+        muzzleFlash.Stop();
+        CartridgeEjectEffect.Stop();
+    }
+
     void Fire()
     {
-       
-          var _bullet = ObjPoolingManager.P_instance.GetPlayerBullet();
+        Invoke("WeaponEffectDisable", 0.1f);
+         var _bullet = ObjPoolingManager.P_instance.GetPlayerBullet();
           _bullet.transform.position = firePos.position;
          _bullet.transform.rotation = firePos.rotation;
          _bullet.SetActive(true);

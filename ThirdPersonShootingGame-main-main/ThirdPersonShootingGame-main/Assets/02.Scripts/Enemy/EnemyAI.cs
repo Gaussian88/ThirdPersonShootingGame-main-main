@@ -120,7 +120,8 @@ public class EnemyAI : MonoBehaviour
     IEnumerator PushPool()
     {
         yield return ws;
-
+        GetComponent<EnemyDamage>().hpBar.gameObject.SetActive(false);
+        GetComponent<EnemyDamage>().hpbarImg.fillAmount = 1f;
         state = State.PATROL;
         isDie = false;
         GetComponent<Rigidbody>().isKinematic = false; //물리 있음음

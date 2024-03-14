@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.UI;
 public class SwatAI : MonoBehaviour
 {
     public enum State { PATROL=1,TRACE,ATTACK,DIE}
@@ -24,6 +23,7 @@ public class SwatAI : MonoBehaviour
     private readonly int hashWalkSpeed = Animator.StringToHash("WalkSpeed");
     private readonly int hashOffset = Animator.StringToHash("Offset");
     private readonly int hashPlayerDie = Animator.StringToHash("PlayerDieTrigger");
+   
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -35,6 +35,7 @@ public class SwatAI : MonoBehaviour
     }
     private void OnEnable()
     {
+        
         Damage.OnPlayerDie += OnPlayerDie;
         BarrelCtrl.OnEnemyDie += Die;
         animator.SetFloat(hashOffset, Random.Range(0.3f, 1.0f));
@@ -42,6 +43,7 @@ public class SwatAI : MonoBehaviour
         StartCoroutine(CheckState());
         StartCoroutine(StateAction());
     }
+   
     IEnumerator CheckState()
     {
         while(!isDie)
@@ -111,7 +113,8 @@ public class SwatAI : MonoBehaviour
     IEnumerator PushPool()
     {
         yield return ws;
-
+        GetComponent<SwatDamage>().hpBar.gameObject.SetActive(false);
+        GetComponent<SwatDamage>().hpBarImg.fillAmount = 1f;
         state = State.PATROL;
         isDie = false;
         GetComponent<Rigidbody>().isKinematic = false; //물리 있음음

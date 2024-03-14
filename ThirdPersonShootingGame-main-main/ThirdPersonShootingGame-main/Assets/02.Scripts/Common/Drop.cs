@@ -1,3 +1,4 @@
+using DataInfo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class Drop : MonoBehaviour,IDropHandler
         if(transform.childCount ==0)
         {
             Drag.DraggingItem.transform.SetParent(this.transform,false);
+            Item item = Drag.DraggingItem.GetComponent<ItemInfo>().itemData;
+            GameManager.Instance.AddItem(item);
         }
     }
 

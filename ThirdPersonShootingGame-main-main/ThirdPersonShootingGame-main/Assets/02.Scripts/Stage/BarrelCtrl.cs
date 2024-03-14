@@ -7,6 +7,10 @@ public class BarrelCtrl : MonoBehaviour
     [SerializeField] AudioSource source;
     [SerializeField] AudioClip explosionClip;
     [SerializeField] GameObject explosionSpark;
+    [SerializeField] private Texture[] textures;
+    [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private Mesh[] meshes;
+    [SerializeField] private MeshFilter meshFilter;
     public int hitCount = 0;
     private string bulletTag = "BULLET";
     public delegate void EnemyDieHandler();
@@ -14,8 +18,12 @@ public class BarrelCtrl : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        renderer = GetComponent<MeshRenderer>();
         explosionClip = Resources.Load<AudioClip>("Sounds/grenade_exp2");
         explosionSpark = Resources.Load<GameObject>("Effects/Exp");
+        textures = Resources.LoadAll<Texture>("BarrelTextures");
+        int idx = Random.Range(0, textures.Length);
+        renderer.material.mainTexture = textures[idx];
     }
     void OnCollisionEnter(Collision col)
     {
@@ -49,7 +57,14 @@ public class BarrelCtrl : MonoBehaviour
             }
 
         }
+
+        Invoke("ShowMeshFilter", 2.0f);
         Camera.main.GetComponent<ShakeCamera>().TurnOn();
 
+    }
+    void ShowMeshFilter()
+    {
+        int idx = Random.Range(0,meshes.Length);
+        meshFilter.sharedMesh = meshes[idx];
     }
 }
