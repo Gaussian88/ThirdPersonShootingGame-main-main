@@ -11,7 +11,7 @@ public class SwatAI : MonoBehaviour
     [SerializeField] private Transform swatTr;
     [SerializeField] private SwatAgent swatAgent;
     [SerializeField] private SwatFire swatFire;
-
+    [SerializeField] private EnemyFOV enemyFOV;
     public float attackDist = 5f;
     public float traceDist = 10f;
     private WaitForSeconds ws;
@@ -26,6 +26,7 @@ public class SwatAI : MonoBehaviour
    
     void Awake()
     {
+        enemyFOV = GetComponent<EnemyFOV>();
         animator = GetComponent<Animator>();
         playerTr = GameObject.FindWithTag("Player").transform;
         swatTr = GetComponent<Transform>();
@@ -46,12 +47,21 @@ public class SwatAI : MonoBehaviour
    
     IEnumerator CheckState()
     {
+        yield return new WaitForSeconds(1f);
+
         while(!isDie)
         {
             float dist = (playerTr.position - swatTr.position).magnitude;
             if (dist <= attackDist)
-                state = State.ATTACK;
-            else if (dist <= traceDist)
+            {
+                if (enemyFOV.IsViewPlayer())
+                    state = State.ATTACK;
+                else
+                    state = State.TRACE;
+
+            }
+                
+            else if (enemyFOV.IsTracePlayer())
                 state = State.TRACE;
             else
                 state = State.PATROL;

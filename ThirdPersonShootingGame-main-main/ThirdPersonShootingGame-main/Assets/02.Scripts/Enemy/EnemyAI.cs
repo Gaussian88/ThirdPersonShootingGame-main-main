@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Transform tr;
     [SerializeField] private MoveAgent moveAgent;
     [SerializeField] private EnemyFire enemyFire;
+    [SerializeField] private EnemyFOV enemyFOV;
     public float attackDist = 5f;
     public float traceDist = 10f;
     public bool isDie = false;
@@ -30,6 +31,7 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTr = GameObject.FindGameObjectWithTag("Player").transform;
         tr = GetComponent<Transform>();
+        enemyFOV = GetComponent<EnemyFOV>();    
         ws = new WaitForSeconds(3f);
     }
     void OnEnable() //오브젝트가 활성화 될때 자동 호출 // 오브젝트 풀링
@@ -44,14 +46,19 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator EnemyState()
     {
+        yield return new WaitForSeconds(1f);
+
         while (!isDie) //계속 조건이 참이면 반복 해서 프레임이 돌게 할려고 
         {
             float dist = Vector3.Distance(playerTr.position, tr.position);
             if (dist <= attackDist)
             {
-                state = State.ATTACK;
+                if (enemyFOV.IsViewPlayer())
+                    state = State.ATTACK;
+                else
+                    state = State.TRACE;
             }
-            else if (dist <= traceDist)
+            else if (enemyFOV.IsTracePlayer())
             {
                 state = State.TRACE;
             }

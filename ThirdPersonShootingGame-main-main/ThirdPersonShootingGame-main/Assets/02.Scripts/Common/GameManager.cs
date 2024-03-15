@@ -83,7 +83,9 @@ public class GameManager : MonoBehaviour
     void SaveGame()
     {
         //dataManager.Save(gameData);
+#if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(gameData);
+#endif
         //프로그램 기법 중에 Dirty 표식을 해둔다.
         //.asset 파일에 데이터 저장
     }
@@ -143,7 +145,9 @@ public class GameManager : MonoBehaviour
         }
 
         OnItemChange();
+#if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(gameData);
+#endif
     }
     public void RemoveItem(Item item)
     {
@@ -180,7 +184,9 @@ public class GameManager : MonoBehaviour
 
 
         OnItemChange();
+#if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(gameData);
+#endif
     }
     IEnumerator CreateEnemies()
     {
